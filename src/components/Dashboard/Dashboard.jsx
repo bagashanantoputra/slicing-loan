@@ -81,7 +81,7 @@ export default function Dashboard() {
 
                 <div className="lg:max-w-full md:max-w-full pb-5 lg:mx-12 mx-5 mt-5 px-5 pt-5 bg-white rounded-xl mb-8">
                     <div className="mt-5 mx-5">
-                        <div className="lg:flex gap-8">
+                        <div className="lg:flex gap-8 bg-white">
                             <div className="flex-row lg:w-1/2">
                                 <div className="lg:flex">
                                     {ChartDataCostumer.map((item) => (
