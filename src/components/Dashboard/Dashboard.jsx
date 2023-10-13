@@ -122,7 +122,7 @@ export default function Dashboard() {
                                                 <Metric className="mt-2 text-xl">{item.countData}</Metric>
                                             </div>
                                             <div>
-                                                <svg className="ps-10 lg:pe-0 pe-12" width="250" height="70">
+                                                <svg className="ps-8 lg:pe-10" width="190" height="70">
                                                     <path d="M0 40 Q25 25, 50 50 T100 50 T150 50 T200 10" stroke={item.color} fill="none"/>
                                                 </svg>
                                             </div>
