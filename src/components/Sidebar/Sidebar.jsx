@@ -1,13 +1,27 @@
 import { Link, useLocation } from 'react-router-dom';
 import { DataMenus } from './DataSidebar'
 import { MdCancel } from "react-icons/md";
+import { useState } from 'react';
 
 export default function Sidebar({ isOpen, toggleSidebar }) {
-    const isMobile = window.innerWidth <= 768;
-    const sidebarClass = isMobile ? isOpen ? "w-screen" : "hidden lg:w-20" : !isMobile ? !isOpen ? "lg:w-72" : "lg:w-20" : "" ;
+    const [isMobile, setMobile] = useState(window.innerWidth <= 768);
+    const [isAddNewsVisible, setAddNewsVisible] = useState(false);
+    const sidebarClass = isMobile
+        ? isOpen
+            ? "w-screen"
+            : "hidden lg:w-20"
+        : !isMobile
+        ? !isOpen
+            ? "lg:w-72"
+            : "lg:w-20"
+        : "";
     const location = useLocation();
     const currentPath = location.pathname;
+    console.log(setMobile);
 
+    const handleNewsClick = () => {
+        setAddNewsVisible(!isAddNewsVisible);
+    };
     return (
         <div className="flex bg-gray-200">
             {/* Sidebar */}
@@ -32,14 +46,32 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                         </div>
                     )} 
                     {DataMenus.map((item) => (
-                        <Link to={item.link}
+                        <Link
+                            to={item.link}
                             key={item.id}
                             className="w-full my-3 flex py-2 no-underline text-white hover:bg-black"
-                            href={item.href}
+                            onClick={() => {
+                                if (item.title === "News") {
+                                    handleNewsClick();
+                                }
+                            }}
                         >
-                            <span className='flex align-items-center gap-2 mx-4 px-4'>{item.imageSrc} {isOpen && !isMobile ? '' : item.title}</span>
+                            <span className="flex text-sm items-center gap-2 mx-4 px-4">
+                                {item.imageSrc} {isOpen && !isMobile ? "" : item.title} 
+                                {isOpen && !isMobile ? "" : isAddNewsVisible && item.title === "News" ? item.arrowDown : item.arrowUp}
+                            </span>
                         </Link>
                     ))}
+                    {isAddNewsVisible && ( 
+                        <Link
+                            to="/add-news"
+                            className="w-full my-3 flex py-2 no-underline text-white hover:bg-black"
+                        >
+                            <span className="flex text-sm items-center gap-2 mx-4 px-10">
+                                {isOpen && !isMobile ? "" : "Add News"} 
+                            </span>
+                        </Link>
+                    )}
                 </nav>
                 {(isMobile || !isOpen) && (currentPath === "/") && (
                 <div className='bg-yellow-100 w-auto p-4 mx-8 my-10'>
@@ -51,6 +83,12 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                 <div className='bg-yellow-100 w-auto p-4 mx-8'>
                     <span className="font-semibold">Note: </span>
                     <p className="text-xs text-justify">So I started to walk into the water. I won't lie to you boys, I was terrified.</p>
+                </div>
+                )} 
+                {(isMobile || !isOpen) && (currentPath === "/user-management") && (
+                <div className='bg-yellow-100 w-auto p-4 mx-8 my-10'>
+                    <span className="font-semibold">Note: </span>
+                    <p className="text-xs text-justify">Author tidak bisa akses User Management.</p>
                 </div>
                 )} 
             </div>
