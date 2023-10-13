@@ -115,7 +115,7 @@ export default function Dashboard() {
                             <div className="flex-row lg:w-1/2">
                                 <div className="flex">
                                     {ChartData.map((item) => (
-                                    <Card key={item.id} className="mx-auto ring-0 ring-transparent shadow-transparent py-0 px-5 bg-white" decoration="left" decorationColor={item.color}>
+                                    <Card key={item.id} className="mx-auto ring-0 ring-tremor-background-muted shadow-transparent py-0 px-5 bg-white" decoration="left" decorationColor={item.color}>
                                         <div className="flex justify-between items-center">
                                             <div>
                                                 <Text className="text-xs">{item.name}</Text>
