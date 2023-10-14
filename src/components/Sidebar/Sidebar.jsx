@@ -17,7 +17,6 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
         : "";
     const location = useLocation();
     const currentPath = location.pathname;
-    console.log(setMobile);
 
     const handleNewsClick = () => {
         setAddNewsVisible(!isAddNewsVisible);

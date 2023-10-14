@@ -79,7 +79,7 @@ const AddNews = () => {
                         </div>
                         <div className="mb-5 mt-5 flex justify-end gap-5">
                             <button type="submit" className="text-blue-500 bg-white border border-blue-500 hover:bg-blue-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center lg:w-1/5">Save as Draft</button>
-                            <button type="submit" className="text-white bg-blue-500 hover:bg-blue-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center lg:w-1/5">Submit</button>
+                            <button type="submit" className="text-white bg-cyan-400 hover:bg-blue-300 focus:ring-4 focus:ring-blue-300 font-medium rounded-md text-sm px-5 py-2.5 text-center lg:w-1/5">Submit</button>
                         </div>
                         </form>
                     </div>

@@ -10,7 +10,6 @@ const AddNewsPage = () => {
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
-        console.log(isOpen)
     };
     return (
         <div className="flex xl:h-screen bg-gray-200">
