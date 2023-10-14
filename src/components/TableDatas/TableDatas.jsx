@@ -103,7 +103,7 @@ const TableDatas = () => {
                                                                     <div className="mt-4 mb-4 px-4 pb-4 sm:flex sm:px-6 justify-center">
                                                                         <button
                                                                             type="button"
-                                                                            className="mt-3 inline-flex w-full justify-center rounded bg-white px-12 py-2.5 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
+                                                                            className="mt-3 inline-flex w-full justify-center rounded bg-white px-12 py-2.5 text-sm font-semibold text-gray-900 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto mb-2"
                                                                             onClick={() => setOpen(false)}
                                                                             ref={cancelButtonRef}
                                                                         >
