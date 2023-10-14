@@ -13,7 +13,7 @@ const NewsPage = () => {
         console.log(isOpen)
     };
     return (
-        <div className="flex h-screen bg-gray-200">
+        <div className="flex xl:h-screen bg-gray-200">
             <Sidebar toggleSidebar={toggleSidebar} isOpen={isOpen}/>
             <div className="flex-1 overflow-x-hidden">
             <Navbar toggleSidebar={toggleSidebar}/>
