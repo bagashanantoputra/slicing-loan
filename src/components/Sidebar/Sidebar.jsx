@@ -6,6 +6,7 @@ import { useState } from 'react';
 export default function Sidebar({ isOpen, toggleSidebar }) {
     const [isMobile, setMobile] = useState(window.innerWidth <= 768);
     const [isAddNewsVisible, setAddNewsVisible] = useState(false);
+
     const sidebarClass = isMobile
         ? isOpen
             ? "w-screen"
@@ -15,6 +16,7 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
             ? "lg:w-72"
             : "lg:w-20"
         : "";
+
     const location = useLocation();
     const currentPath = location.pathname;
 
@@ -45,32 +47,37 @@ export default function Sidebar({ isOpen, toggleSidebar }) {
                         </div>
                     )} 
                     {DataMenus.map((item) => (
-                        <Link
-                            to={item.link}
-                            key={item.id}
-                            className="w-full my-3 flex py-2 no-underline text-white hover:bg-black"
-                            onClick={() => {
-                                if (item.title === "News") {
-                                    handleNewsClick();
-                                }
-                            }}
-                        >
-                            <span className="flex text-sm items-center gap-2 mx-4 px-4">
-                                {item.imageSrc} {isOpen && !isMobile ? "" : item.title} 
-                                {isOpen && !isMobile ? "" : isAddNewsVisible && item.title === "News" ? item.arrowDown : item.arrowUp}
-                            </span>
-                        </Link>
+                    <Link
+                        to={item.link}
+                        key={item.id}
+                        className="w-full my-3 flex py-2 no-underline text-white hover:bg-black"
+                        onClick={() => {
+                        if (item.title === "News") {
+                            handleNewsClick();
+                        }
+                        }}
+                    >
+                        <span className="flex text-sm items-center gap-2 mx-4 px-4">
+                        {item.imageSrc} {isOpen && !isMobile ? "" : item.title}
+                        {isOpen && !isMobile
+                            ? ""
+                            : (isAddNewsVisible || window.location.pathname === "/add-news") &&
+                            item.title === "News"
+                            ? item.arrowDown
+                            : item.arrowUp}
+                        </span>
+                    </Link>
                     ))}
-                    {isAddNewsVisible && ( 
-                        <Link
-                            to="/add-news"
-                            className="w-full my-3 flex py-2 no-underline text-white hover:bg-black"
-                        >
-                            <span className="flex text-sm items-center gap-2 mx-4 px-10">
-                                {isOpen && !isMobile ? "" : "Add News"} 
-                            </span>
-                        </Link>
-                    )}
+                    {isAddNewsVisible || window.location.pathname === "/add-news" ? (
+                    <Link
+                        to="/add-news"
+                        className="w-full my-3 flex py-2 no-underline text-white hover:bg-black"
+                    >
+                        <span className="flex text-sm items-center gap-2 mx-4 px-10">
+                        {isOpen && !isMobile ? "" : "Add News"} {isAddNewsVisible ? DataMenus[0].arrowUp : DataMenus[0].arrowDown}
+                        </span>
+                    </Link>
+                    ) : null}
                 </nav>
                 {(isMobile || !isOpen) && (currentPath === "/") && (
                 <div className='bg-yellow-100 w-auto p-4 mx-8 my-10'>
